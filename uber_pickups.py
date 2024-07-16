@@ -2,6 +2,29 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+# Initialization
+if 'key' not in st.session_state:
+    st.session_state['key'] = 'value'
+
+# Session State also supports attribute based syntax
+if 'key' not in st.session_state:
+    st.session_state.key = 'value'
+
+
+# Read
+st.write(st.session_state.key)
+
+st.session_state.key = 'value2'     # Attribute API
+st.session_state['key'] = 'value2'  # Dictionary like API
+
+st.write(st.session_state)
+
+# With magic:
+st.session_state
+
+st.write(st.session_state['value'])
+
+
 st.title('Uber pickups in NYC')
 
 DATE_COLUMN = 'date/time'
