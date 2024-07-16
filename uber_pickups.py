@@ -1,7 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#from urllib.error import URLError
+import pydeck as pdk
+import time
+import altair as alt
+from urllib.error import URLError
+
 
 def intro():
     import streamlit as st
@@ -33,19 +37,10 @@ def intro():
     )
 
 def mapping_demo():
-    import streamlit as st
-    import pandas as pd
-    import pydeck as pdk
-
-    from urllib.error import URLError
 
     st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
     st.write(
-        """
-        This demo shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/develop/api-reference/charts/st.pydeck_chart)
-to display geospatial data.
-"""
+      
     )
 
     @st.cache_data
@@ -130,17 +125,10 @@ to display geospatial data.
         )
 
 def plotting_demo():
-    import streamlit as st
-    import time
-    import numpy as np
-
+  
     st.markdown(f'# {list(page_names_to_funcs.keys())[1]}')
     st.write(
-        """
-        This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!
-"""
+       
     )
 
     progress_bar = st.sidebar.progress(0)
@@ -165,8 +153,7 @@ Streamlit. We're generating a bunch of random numbers in a loop for around
 
 
 def data_frame_demo():
-    import streamlit as st
-    import pandas as pd
+   
     import altair as alt
 
     from urllib.error import URLError
@@ -224,6 +211,7 @@ def data_frame_demo():
 
 page_names_to_funcs = {
     "—": intro,
+    "Uber Pickups": load_data,
     "Plotting Demo": plotting_demo,
     "Mapping Demo": mapping_demo,
     "DataFrame Demo": data_frame_demo
