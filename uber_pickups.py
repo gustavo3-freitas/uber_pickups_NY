@@ -46,13 +46,13 @@ def uber_pickups():
 
 st.title('Streamlit Examples')
 
-
-@st.cache_data
-def load_data(nrows):
-
 DATE_COLUMN = 'date/time'
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
             'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+@st.cache_data
+def load_data(nrows):
+
+
 
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
@@ -265,14 +265,6 @@ demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
 page_names_to_funcs[demo_name]()
 
 
-
-#-----------2
-
-
-#------3------
-
-
-#----------------
 
 
 
