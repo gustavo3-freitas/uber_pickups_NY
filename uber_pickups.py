@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from urllib.error import URLError
+#from urllib.error import URLError
 
 st.set_page_config(
     page_title="Hello",
