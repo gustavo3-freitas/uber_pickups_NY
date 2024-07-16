@@ -1,10 +1,34 @@
+import streamlit as st
+
 def intro():
     import streamlit as st
 
-    st.write("# EBAC Streamlit Exemplos! 👋")
-    st.sidebar.success("Selecione uma das demos acima.")
+    st.write("# Welcome to Streamlit! 👋")
+    st.sidebar.success("Select a demo above.")
 
-    
+    st.markdown(
+        """
+        Streamlit is an open-source app framework built specifically for
+        Machine Learning and Data Science projects.
+
+        **👈 Select a demo from the dropdown on the left** to see some examples
+        of what Streamlit can do!
+
+        ### Want to learn more?
+
+        - Check out [streamlit.io](https://streamlit.io)
+        - Jump into our [documentation](https://docs.streamlit.io)
+        - Ask a question in our [community
+          forums](https://discuss.streamlit.io)
+
+        ### See more complex demos
+
+        - Use a neural net to [analyze the Udacity Self-driving Car Image
+          Dataset](https://github.com/streamlit/demo-self-driving)
+        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+    """
+    )
+
 def mapping_demo():
     import streamlit as st
     import pandas as pd
@@ -13,7 +37,13 @@ def mapping_demo():
     from urllib.error import URLError
 
     st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
-  
+    st.write(
+        """
+        This demo shows how to use
+[`st.pydeck_chart`](https://docs.streamlit.io/develop/api-reference/charts/st.pydeck_chart)
+to display geospatial data.
+"""
+    )
 
     @st.cache_data
     def from_data_file(filename):
@@ -85,11 +115,11 @@ def mapping_demo():
                 )
             )
         else:
-            st.error("Por favor, selecione pelo menos uma demo acima.")
+            st.error("Please choose at least one layer above.")
     except URLError as e:
         st.error(
             """
-            **Esta demo necessita de internet.**
+            **This demo requires internet access.**
 
             Connection error: %s
         """
@@ -139,7 +169,13 @@ def data_frame_demo():
     from urllib.error import URLError
 
     st.markdown(f"# {list(page_names_to_funcs.keys())[3]}")
-    
+    st.write(
+        """
+        This demo shows how to use `st.write` to visualize Pandas DataFrames.
+
+(Data courtesy of the [UN Data Explorer](http://data.un.org/Explorer.aspx).)
+"""
+    )
 
     @st.cache_data
     def get_UN_data():
