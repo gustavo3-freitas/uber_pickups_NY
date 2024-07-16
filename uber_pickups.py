@@ -32,11 +32,10 @@ def intro():
 
 def uber_pickups():
 
-    st.markdown(f"# {list(page_names_to_funcs.keys())[0]}")
+    st.markdown(f"# {list(page_names_to_funcs.keys())[4]}")
     st.write(
       
     )
-
 
 st.title('Streamlit Examples')
 
@@ -263,6 +262,7 @@ def data_frame_demo():
 
 page_names_to_funcs = {
     "—": intro,
+    "Uber Pickups Demo": uber_pickups,
     "Plotting Demo": plotting_demo,
     "Mapping Demo": mapping_demo,
     "DataFrame Demo": data_frame_demo
