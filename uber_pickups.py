@@ -1,91 +1,19 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
-import pydeck as pdk
-import time
-import altair as alt
-from urllib.error import URLError
+def intro():
+    import streamlit as st
 
-st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
-)
+    st.write("# EBAC Streamlit Exemplos! 👋")
+    st.sidebar.success("Selecione uma das demos acima.")
 
-st.write("# Welcome to Streamlit! 👋")
-
-st.sidebar.success("Select a demo above.")
-
-st.markdown(
-    """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-"""
-)
-
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
-
-
-def uber_pickups():
-
-    st.markdown(f"# {list(page_names_to_funcs.keys())[0]}")
-    st.write(
-      
-    )
-
-
-st.title('Streamlit Examples')
-
-
-@st.cache_data
-def load_data(nrows):
-
-
-
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
-
-data_load_state = st.text('Loading data...')
-data = load_data(10000)
-data_load_state.text("Done! (using st.cache_data)")
-
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
-    st.write(data)
-
-st.subheader('Number of pickups by hour')
-hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
-st.bar_chart(hist_values)
-
-# Some number in the range 0-23
-hour_to_filter = st.slider('hour', 0, 23, 17)
-filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
-
-st.subheader('Map of all pickups at %s:00' % hour_to_filter)
-st.map(filtered_data)
-
-
+    
 def mapping_demo():
+    import streamlit as st
+    import pandas as pd
+    import pydeck as pdk
+
+    from urllib.error import URLError
 
     st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
-    st.write(
-      
-    )
+  
 
     @st.cache_data
     def from_data_file(filename):
@@ -157,11 +85,11 @@ def mapping_demo():
                 )
             )
         else:
-            st.error("Please choose at least one layer above.")
+            st.error("Por favor, selecione pelo menos uma demo acima.")
     except URLError as e:
         st.error(
             """
-            **This demo requires internet access.**
+            **Esta demo necessita de internet.**
 
             Connection error: %s
         """
@@ -169,10 +97,17 @@ def mapping_demo():
         )
 
 def plotting_demo():
-  
+    import streamlit as st
+    import time
+    import numpy as np
+
     st.markdown(f'# {list(page_names_to_funcs.keys())[1]}')
     st.write(
-       
+        """
+        This demo illustrates a combination of plotting and animation with
+Streamlit. We're generating a bunch of random numbers in a loop for around
+5 seconds. Enjoy!
+"""
     )
 
     progress_bar = st.sidebar.progress(0)
@@ -197,19 +132,14 @@ def plotting_demo():
 
 
 def data_frame_demo():
-   
+    import streamlit as st
+    import pandas as pd
     import altair as alt
 
     from urllib.error import URLError
 
     st.markdown(f"# {list(page_names_to_funcs.keys())[3]}")
-    st.write(
-        """
-        This demo shows how to use `st.write` to visualize Pandas DataFrames.
-
-(Data courtesy of the [UN Data Explorer](http://data.un.org/Explorer.aspx).)
-"""
-    )
+    
 
     @st.cache_data
     def get_UN_data():
@@ -255,7 +185,6 @@ def data_frame_demo():
 
 page_names_to_funcs = {
     "—": intro,
-    "Uber Pickups": uber_pickups,
     "Plotting Demo": plotting_demo,
     "Mapping Demo": mapping_demo,
     "DataFrame Demo": data_frame_demo
@@ -263,17 +192,3 @@ page_names_to_funcs = {
 
 demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
 page_names_to_funcs[demo_name]()
-
-
-
-#-----------2
-
-
-#------3------
-
-
-#----------------
-
-
-
-
