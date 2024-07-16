@@ -33,7 +33,9 @@ st.markdown(
 """
 )
 
-
+DATE_COLUMN = 'date/time'
+DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
+            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
 
 
 def uber_pickups():
@@ -46,9 +48,7 @@ def uber_pickups():
 
 st.title('Streamlit Examples')
 
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+
 @st.cache_data
 def load_data(nrows):
 
@@ -265,6 +265,14 @@ demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
 page_names_to_funcs[demo_name]()
 
 
+
+#-----------2
+
+
+#------3------
+
+
+#----------------
 
 
 
