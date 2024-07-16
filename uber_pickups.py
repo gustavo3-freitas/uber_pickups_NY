@@ -64,6 +64,14 @@ def intro():
     """
     )
 
+def uber_pickups():
+
+    st.markdown(f"# {list(page_names_to_funcs.keys())[0]}")
+    st.write(
+      
+    )
+
+
 st.title('Uber pickups in NYC')
 
 DATE_COLUMN = 'date/time'
